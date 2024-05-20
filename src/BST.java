@@ -15,7 +15,6 @@ public class BST<K extends Comparable<? super K>, V> implements DefaultMap<K, V>
 	 * you may NOT use any class that implements java.util.SortedMap
 	 * or any other implementation of a binary search tree
 	 */
-
 	@Override
 	public boolean put(K key, V value) throws IllegalArgumentException {
 		// TODO Auto-generated method stub
@@ -73,16 +72,30 @@ public class BST<K extends Comparable<? super K>, V> implements DefaultMap<K, V>
 		return null;
 	}
 	
+	//all nodes in the tree will be compared by the key
+	//key has type K --> K must inherits the Comparable class to accept comparing 2 objects of K
+	//for one node on the BST
+	//it has: data, left and right references
 	private static class Node<K extends Comparable<? super K>, V> 
 								implements DefaultMap.Entry<K, V> {
 		/* 
 		 * TODO: Add instance variables
 		 */
+		K key;
+		V value;
+
+		Node<K, V> left, right;
+
+		Node (K key, V value){
+			this.key = key;
+			this.value = value;
+			left = right = null; //we create single node --> left and right must refer to null
+		}
 
 		@Override
 		public K getKey() {
 			// TODO Auto-generated method stub
-			return null;
+			return key;
 		}
 
 		@Override
