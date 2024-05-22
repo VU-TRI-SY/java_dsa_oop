@@ -70,6 +70,20 @@ public class BST<K extends Comparable<? super K>, V> implements DefaultMap<K, V>
 		}
 	}
 
+	public ArrayList<V> getValues(){ 
+		//return list of values in the tree
+		ArrayList<V> arr = new ArrayList<>();
+		getValues_helper(arr, root);
+		return arr;
+	}
+
+	private void getValues_helper(ArrayList<V> arr, Node root){
+		if(root == null) return;
+		getValues_helper(arr, root.left);
+		arr.add((V) root.value);
+		getValues_helper(arr, root.right);
+	}
+
 	
 	@Override
 	public boolean remove(K key) throws IllegalArgumentException {
