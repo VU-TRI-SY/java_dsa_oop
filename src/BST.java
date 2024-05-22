@@ -118,6 +118,10 @@ public class BST<K extends Comparable<? super K>, V> implements DefaultMap<K, V>
 			root.right = remove_helper(root.right, key);
 		} else { //key == root.key
 			//remove this root
+			
+			if(root.left == null) return root.right;
+			else if(root.right == null) return root.left;
+
 			Node min_node = minNode(root.right);
 			
 			//copy key and value of min_node to root
