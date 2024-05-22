@@ -29,12 +29,12 @@ public class BST<K extends Comparable<? super K>, V> implements DefaultMap<K, V>
 		// TODO Auto-generated method stub
 		if(key == null) throw new IllegalArgumentException();
 
-		if(containsKey(key) == true) return true;
+		if(containsKey(key) == true) return false;
 
 		this.root = put_helper(root, key, value);
 		size++;
 
-		return false;
+		return true;
 	}
 
 	private Node put_helper(Node root, K key, V value){
@@ -96,7 +96,7 @@ public class BST<K extends Comparable<? super K>, V> implements DefaultMap<K, V>
 		size--; //reduce the size
 		root = remove_helper(root, key); //remove node
 
-		return false;
+		return true;
 	}
 
 	private Node minNode(Node root){ //return the left most node on the tree with 'root'
@@ -118,7 +118,7 @@ public class BST<K extends Comparable<? super K>, V> implements DefaultMap<K, V>
 			root.right = remove_helper(root.right, key);
 		} else { //key == root.key
 			//remove this root
-			
+
 			if(root.left == null) return root.right;
 			else if(root.right == null) return root.left;
 
